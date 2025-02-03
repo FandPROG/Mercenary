@@ -1,0 +1,51 @@
+{
+    "skills": [
+      {
+        "id": 101,
+        "name": "기본공격",
+        "description": "무기를 이용해 상대를 타격한다.",
+        "manaCost": 0,
+        "targetCount": 1,
+        "effectIndex": 0,
+        "skillType": 2,
+        "attackMultiplier": 0.5,
+        "iconIndex": 0
+      },
+      {
+        "id": 102,
+        "name": "메직 미사일",
+        "description": "마력덩어리로 상대를 타격한다.",
+        "manaCost": 0,
+        "targetCount": 1,
+        "effectIndex": 1,
+        "skillType": 3,
+        "attackMultiplier": 0.5,
+        "iconIndex": 1
+      },
+      {
+        "id": 103,
+        "name": "힘의 주문",
+        "description": "아군의 물리 공격력을 1턴간 증가시킨다.",
+        "manaCost": 20,
+        "targetCount": 1,
+        "effectIndex": 2,
+        "skillType": 0,
+        "statData": "{ \"physicalAttack\": 10 }",
+        "duration": 1,
+        "iconIndex": 2
+      },
+      {
+        "id": 104,
+        "name": "약화의 저주",
+        "description": "적의 물리 공격력을 1턴간 감소시킨다.",
+        "manaCost": 20,
+        "targetCount": 1,
+        "effectIndex": 3,
+        "skillType": 1,
+        "statData": "{ \"physicalAttack\": -10 }",
+        "duration": 1,
+        "iconIndex": 3
+      }
+    ]
+  }
+  

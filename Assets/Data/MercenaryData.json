@@ -1,0 +1,27 @@
+{
+    "mercenaries": [
+      {
+        "rank": 1,
+        "name": "초보 전사",
+        "lore": "전사의 길을 막 시작한 용병.",
+        "fame": 20,
+        "job": "전사",
+        "element": "무속성",
+        "statData": "{ \"speed\": 5, \"physicalAttack\": 10, \"magicAttack\": 5, \"health\": 100, \"magicResistance\": 5, \"physicalResistance\": 10, \"effectResistance\": 3, \"effectAccuracy\": 4 }",
+        "spriteIndex": 0,
+        "skillIDs": []
+      },
+      {
+        "rank": 3,
+        "name": "불꽃 검사",
+        "lore": "화염을 두른 검을 다루는 검사.",
+        "fame": 50,
+        "job": "전사",
+        "element": "불",
+        "statData": "{ \"speed\": 7, \"physicalAttack\": 25, \"magicAttack\": 10, \"health\": 200, \"magicResistance\": 8, \"physicalResistance\": 15, \"effectResistance\": 5, \"effectAccuracy\": 6 }",
+        "spriteIndex": 1,
+        "skillIDs": []
+      }
+    ]
+  }
+  
