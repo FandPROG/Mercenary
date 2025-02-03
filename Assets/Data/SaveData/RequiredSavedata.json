@@ -1,6 +1,6 @@
 {
-    "day": 3,
-    "gold": 200,
+    "day": 1,
+    "gold": 100,
     "difficulty": 1,
-    "maxCapacity": 11
+    "maxCapacity": 10
 }
