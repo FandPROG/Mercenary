@@ -10,17 +10,16 @@ public class MercenaryManager : MonoBehaviour
 
     // 등급별 용병 데이터 (2차원 리스트)
     public static List<Mercenary>[] mercenaryListByRank = new List<Mercenary>[10];
-
     private void Awake()
     {
         if (Instance == null)
         {
             Instance = this;
-            DontDestroyOnLoad(gameObject);
         }
         else
         {
             Destroy(gameObject);
+            return;
         }
 
         // 📌 2차원 리스트 초기화 (모든 등급을 비어 있는 리스트로 초기화)
