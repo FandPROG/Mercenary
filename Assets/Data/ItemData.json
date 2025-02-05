@@ -1,0 +1,35 @@
+{
+    "items": [
+      {
+        "id": 1,
+        "name": "힘의 물약",
+        "description": "전투 중 물리 공격력을 증가시키는 물약.",
+        "itemType": 0,
+        "bonusStats": "{ \"physicalAttack\": 5 }",
+        "increaseStats": "",
+        "iconIndex": 0,
+        "duration": 3
+      },
+      {
+        "id": 2,
+        "name": "치유 포션",
+        "description": "사용 시 체력을 회복하는 포션.",
+        "itemType": 1,
+        "bonusStats": "",
+        "increaseStats": "{ \"health\": 50 }",
+        "iconIndex": 0,
+        "duration": 0
+      },
+      {
+        "id": 3,
+        "name": "강화석",
+        "description": "장비를 강화하는 데 사용되는 재료.",
+        "itemType": 2,
+        "bonusStats": "",
+        "increaseStats": "",
+        "iconIndex": 1,
+        "duration": 0
+      }
+    ]
+  }
+  

@@ -21,7 +21,7 @@ public class Inventory : MonoBehaviour
             Destroy(gameObject);
         }
 
-        savePath = Path.Combine(Application.persistentDataPath, "InventoryData.json");
+        savePath = Path.Combine(Application.dataPath, "Data", "SaveData", "InventoryData.json");
         LoadInventory();
     }
 
@@ -59,12 +59,32 @@ public class Inventory : MonoBehaviour
         File.WriteAllText(savePath, json);
     }
 
+    public Dictionary<int, int> GetAllOwnedItems()
+    {
+        return new Dictionary<int, int>(ownedItems); // 보유 아이템 목록을 복사하여 반환
+    }
+
     private void LoadInventory()
     {
-        if (!File.Exists(savePath)) return;
+        if (!File.Exists(savePath))
+        {
+            Debug.LogError($"❌ InventoryData.json 파일을 찾을 수 없습니다! 경로: {savePath}");
+            return;
+        }
+
         string json = File.ReadAllText(savePath);
+        Debug.Log($"📜 불러온 JSON 데이터: {json}");
+
         InventoryDataWrapper data = JsonUtility.FromJson<InventoryDataWrapper>(json);
+        if (data == null || data.itemIds == null || data.itemCounts == null)
+        {
+            Debug.LogError("❌ InventoryData.json이 비어 있거나 잘못된 형식입니다.");
+            return;
+        }
+
         ownedItems = data.ToDictionary();
+
+        Debug.Log($"✅ 인벤토리 데이터 로드 완료! 총 {ownedItems.Count}개 아이템 보유");
     }
 }
 

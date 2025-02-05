@@ -135,4 +135,10 @@ public class Mercenary
         currentMana = Mathf.Min(maxMana, currentMana + amount);
         Debug.Log($"{name}의 마나가 {amount} 회복되었습니다! (현재 마나: {currentMana}/{maxMana})");
     }
+
+    public void ApplyStatBoost(Stat stat)
+    {
+        buffStats += stat;
+        Debug.Log($"{name}의 스탯이 강화되었습니다! 적용된 스탯: {stat.ToFilteredString()}");
+    }
 }

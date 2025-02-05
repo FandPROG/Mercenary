@@ -25,7 +25,7 @@ public class ItemDatabase : MonoBehaviour
 
     private void LoadItemData()
     {
-        string filePath = Path.Combine(Application.persistentDataPath, "ItemData.json");
+        string filePath = Path.Combine(Application.dataPath, "Data", "ItemData.json");
         if (!File.Exists(filePath))
         {
             Debug.LogError("ItemData.json 파일을 찾을 수 없습니다!");
