@@ -27,14 +27,14 @@ public class StorageUI : MonoBehaviour
         equipmentStoragePanel.SetActive(false);
     }
 
-    // 📌 창고 패널 열기
+    // 창고 패널 열기
     private void OpenStoragePanel()
     {
         storagePanel.SetActive(true);
         OpenItemStorage(); // 기본적으로 아이템 패널을 활성화
     }
 
-    // 📌 창고 패널 닫기
+    // 창고 패널 닫기
     private void CloseStoragePanel()
     {
         storagePanel.SetActive(false);
@@ -42,14 +42,14 @@ public class StorageUI : MonoBehaviour
         equipmentStoragePanel.SetActive(false);
     }
 
-    // 📌 아이템 창고 패널 활성화
+    // 아이템 창고 패널 활성화
     private void OpenItemStorage()
     {
         itemStoragePanel.SetActive(true);
         equipmentStoragePanel.SetActive(false);
     }
 
-    // 📌 장비 창고 패널 활성화
+    // 장비 창고 패널 활성화
     private void OpenEquipmentStorage()
     {
         itemStoragePanel.SetActive(false);

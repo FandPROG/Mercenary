@@ -19,7 +19,7 @@ public class BaseItem
     }
 }
 
-// 📌 전투 아이템 (전투 중 사용, 일정 턴 동안 스탯 증가)
+// 전투 아이템 (전투 중 사용, 일정 턴 동안 스탯 증가)
 [System.Serializable]
 public class BattleItem : BaseItem
 {
@@ -34,7 +34,7 @@ public class BattleItem : BaseItem
     }
 }
 
-// 📌 소비 아이템 (특정 용병의 스탯을 회복하거나 증가)
+// 소비 아이템 (특정 용병의 스탯을 회복하거나 증가)
 [System.Serializable]
 public class ConsumableItem : BaseItem
 {
@@ -47,7 +47,7 @@ public class ConsumableItem : BaseItem
     }
 }
 
-// 📌 재료 아이템 (퀘스트, 장비 강화, 용병 훈련 재료)
+// 재료 아이템 (퀘스트, 장비 강화, 용병 훈련 재료)
 [System.Serializable]
 public class MaterialItem : BaseItem
 {

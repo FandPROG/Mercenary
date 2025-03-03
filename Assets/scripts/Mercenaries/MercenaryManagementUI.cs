@@ -21,7 +21,7 @@ public class MercenaryManagementUI : MonoBehaviour
     public Button backButton, upgradeCapacityButton;
     private Mercenary selectedMercenary;
 
-    // 📌 스킬 UI 패널 관련 변수 추가
+    // 스킬 UI 패널 관련 변수 추가
 public GameObject skillPanel; // 스킬 패널
 public Image skillIcon;
 public TextMeshProUGUI skillName;
@@ -46,7 +46,7 @@ private List<BaseSkill> currentSkills; // 현재 용병의 보유 스킬 리스�
         equipWeaponButton.onClick.AddListener(OpenWeaponPanel);
         equipArmorButton.onClick.AddListener(OpenArmorPanel);
         dismissButton.onClick.AddListener(DismissMercenary);
-        // 📌 스킬 버튼 클릭 시 `SkillPanel`을 열도록 설정
+        // 스킬 버튼 클릭 시 `SkillPanel`을 열도록 설정
         skillButton.onClick.AddListener(OpenSkillPanel);
         closeSkillButton.onClick.AddListener(CloseSkillPanel);
         skillPrevButton.onClick.AddListener(ShowPreviousSkill);
@@ -111,7 +111,7 @@ private List<BaseSkill> currentSkills; // 현재 용병의 보유 스킬 리스�
         currentSkills = mercenary.skills;
         currentSkillIndex = 0;
 
-        // 📌 스킬 버튼 활성화 여부 결정 (스킬이 없는 경우 비활성화)
+        // 스킬 버튼 활성화 여부 결정 (스킬이 없는 경우 비활성화)
         skillButton.interactable = (currentSkills != null && currentSkills.Count > 0);
     }
     private void CloseDetailPanel()
@@ -179,7 +179,7 @@ private List<BaseSkill> currentSkills; // 현재 용병의 보유 스킬 리스�
         skillTargetCount.text = $"타겟 수: {skill.targetCount}";
         skillType.text = $"스킬 유형: {skill.GetType().Name}";
 
-        // 📌 스킬 유형별 추가 정보 설정 (0이 아닌 값만 표시)
+        // 스킬 유형별 추가 정보 설정 (0이 아닌 값만 표시)
         if (skill is BuffSkill buffSkill)
         {
             string statInfo = buffSkill.bonusStats.ToFilteredString();
@@ -203,7 +203,7 @@ private List<BaseSkill> currentSkills; // 현재 용병의 보유 스킬 리스�
             skillExtraInfo.text = "❓ 알 수 없는 스킬 유형";
         }
 
-        // 📌 이전/다음 버튼 활성화 여부 설정
+        // 이전/다음 버튼 활성화 여부 설정
         skillPrevButton.interactable = (index > 0);
         skillNextButton.interactable = (index < currentSkills.Count - 1);
     }

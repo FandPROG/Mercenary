@@ -63,7 +63,7 @@ public class EquipmentDatabase : MonoBehaviour
     }
 }
 
-// 📌 JSON 데이터를 담는 클래스
+// JSON 데이터를 담는 클래스
 [System.Serializable]
 public class EquipmentDataWrapper
 {
@@ -78,6 +78,6 @@ public class EquipmentData
     public string description;
     public string equipmentType;
     public int starRating;
-    public string bonusStats; // 📌 Stat을 JSON 문자열로 저장
+    public string bonusStats; // Stat을 JSON 문자열로 저장
     public int iconIndex;
 }

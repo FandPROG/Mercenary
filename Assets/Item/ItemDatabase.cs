@@ -44,7 +44,7 @@ public class ItemDatabase : MonoBehaviour
                 itemDict[item.id] = item;
             }
         }
-        Debug.Log($"✅ 아이템 데이터 로드 완료! 총 {itemDict.Count}개");
+        Debug.Log($"아이템 데이터 로드 완료! 총 {itemDict.Count}개");
     }
 
     public static BaseItem GetItemByID(int id)
@@ -70,7 +70,7 @@ public class ItemDatabase : MonoBehaviour
             case ItemType.Material:
                 return new MaterialItem(data.id, data.name, data.description, null);
             default:
-                Debug.LogError($"⚠️ 알 수 없는 아이템 타입: {data.itemType}");
+                Debug.LogError($"알 수 없는 아이템 타입: {data.itemType}");
                 return null;
         }
     }

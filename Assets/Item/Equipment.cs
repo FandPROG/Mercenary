@@ -24,7 +24,7 @@ public class Equipment
         this.icon = icon;
     }
 
-    // 📌 JSON 변환 메서드 추가
+    // JSON 변환 메서드 추가
     public string ToJSON()
     {
         return JsonUtility.ToJson(this);

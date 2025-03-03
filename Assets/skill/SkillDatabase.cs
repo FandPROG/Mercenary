@@ -5,7 +5,7 @@ using UnityEngine;
 public class SkillDatabase : MonoBehaviour
 {
     public static SkillDatabase Instance;
-    public List<Sprite> skillIcons; // 🔹 스킬 아이콘 리스트 추가
+    public List<Sprite> skillIcons; // 스킬 아이콘 리스트 추가
     private static Dictionary<int, BaseSkill> skillDict = new Dictionary<int, BaseSkill>();
 
     private void Awake()
@@ -28,7 +28,7 @@ public class SkillDatabase : MonoBehaviour
         string filePath = Path.Combine(Application.dataPath, "Data", "SkillData.json");
         if (!File.Exists(filePath))
         {
-            Debug.LogError("❌ SkillData.json 파일을 찾을 수 없습니다!");
+            Debug.LogError(" SkillData.json 파일을 찾을 수 없습니다!");
             return;
         }
 
@@ -37,14 +37,14 @@ public class SkillDatabase : MonoBehaviour
 
         foreach (SkillData data in skillDataWrapper.skills)
         {
-            Sprite icon = GetSpriteByIndex(data.iconIndex); // 🔹 아이콘 불러오기
+            Sprite icon = GetSpriteByIndex(data.iconIndex); // 아이콘 불러오기
             BaseSkill skill = CreateSkillFromData(data, icon);
             if (skill != null)
             {
                 skillDict[data.id] = skill;
             }
         }
-        Debug.Log($"✅ 스킬 데이터 로드 완료! 총 {skillDict.Count}개");
+        Debug.Log($"스킬 데이터 로드 완료! 총 {skillDict.Count}개");
     }
 
     public static BaseSkill GetSkillByID(int id)
@@ -52,9 +52,14 @@ public class SkillDatabase : MonoBehaviour
         return skillDict.ContainsKey(id) ? skillDict[id] : null;
     }
 
+    private Sprite GetSpriteByIndex(int index)
+    {
+        return (index >= 0 && index < skillIcons.Count) ? skillIcons[index] : null;
+    }
+
     private BaseSkill CreateSkillFromData(SkillData data, Sprite icon)
     {
-        SkillType skillType = (SkillType)data.skillType; // 🔹 숫자로 저장된 skillType을 변환
+        SkillType skillType = (SkillType)data.skillType; //숫자로 저장된 skillType을 변환
 
         switch (skillType)
         {
@@ -66,19 +71,18 @@ public class SkillDatabase : MonoBehaviour
                 return new PhysicalAttackSkill(data.id, data.name, data.description, data.manaCost, data.targetCount, data.effectIndex, icon, data.attackMultiplier);
             case SkillType.MagicAttack:
                 return new MagicAttackSkill(data.id, data.name, data.description, data.manaCost, data.targetCount, data.effectIndex, icon, data.attackMultiplier);
+            case SkillType.Heal: // HP 회복 스킬 추가
+                return new HealSkill(data.id, data.name, data.description, data.manaCost, data.targetCount, data.effectIndex, icon, data.healAmount);
+            case SkillType.ManaHeal: // 마나 회복 스킬 추가
+                return new ManaHealSkill(data.id, data.name, data.description, data.manaCost, data.targetCount, data.effectIndex, icon, data.manaRestoreAmount);
             default:
                 Debug.LogError($"⚠️ 알 수 없는 스킬 타입: {data.skillType}");
                 return null;
         }
     }
-
-    private Sprite GetSpriteByIndex(int index)
-    {
-        return (index >= 0 && index < skillIcons.Count) ? skillIcons[index] : null;
-    }
 }
 
-// 📌 JSON에서 불러올 스킬 데이터 클래스
+// JSON에서 불러올 스킬 데이터 클래스
 [System.Serializable]
 public class SkillDataWrapper
 {
@@ -94,9 +98,11 @@ public class SkillData
     public int manaCost;
     public int targetCount;
     public int effectIndex;
-    public int skillType; // 🔹 숫자로 저장된 스킬 타입 (0, 1, 2, 3)
-    public string statData; // 📌 Buff/Debuff에 사용됨
-    public float attackMultiplier; // 📌 물리/마법 공격 스킬에 사용됨
-    public int duration; // 📌 버프/디버프의 지속 턴 추가
-    public int iconIndex; // 🔹 스킬 아이콘의 인덱스 추가
+    public int skillType; // 숫자로 저장된 스킬 타입 (0~5)
+    public string statData; // Buff/Debuff에 사용됨
+    public float attackMultiplier; // 물리/마법 공격 스킬에 사용됨
+    public int duration; // 버프/디버프의 지속 턴 추가
+    public int iconIndex; // 스킬 아이콘의 인덱스 추가
+    public int healAmount; // HP 회복 스킬에 사용
+    public int manaRestoreAmount; // 마나 회복 스킬에 사용
 }

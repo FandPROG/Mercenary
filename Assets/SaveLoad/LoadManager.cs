@@ -41,7 +41,7 @@ public class LoadManager : MonoBehaviour
         Day = data.day;
         Gold = data.gold;
         Difficulty = data.difficulty;
-        MercenaryManager.maxCapacity = data.maxCapacity; // 📌 maxCapacity 불러오기
+        MercenaryManager.maxCapacity = data.maxCapacity; // maxCapacity 불러오기
 
         Debug.Log($"기본 데이터 로드 완료: Day {Day}, Gold {Gold}, Difficulty {Difficulty}, maxCapacity {MercenaryManager.maxCapacity}");
     }
@@ -51,17 +51,17 @@ public class LoadManager : MonoBehaviour
         string mercenaryDataPath = Path.Combine(savePath, "MercenarySavedata.json");
         if (!File.Exists(mercenaryDataPath))
         {
-            Debug.LogError($"❌ 용병 데이터 파일이 존재하지 않습니다: {mercenaryDataPath}");
+            Debug.LogError($"용병 데이터 파일이 존재하지 않습니다: {mercenaryDataPath}");
             return;
         }
 
         string json = File.ReadAllText(mercenaryDataPath);
-        Debug.Log($"📜 불러온 JSON 데이터: {json}"); // JSON 데이터 출력
+        Debug.Log($"불러온 JSON 데이터: {json}"); // JSON 데이터 출력
 
         MercenarySaveWrapper mercenaryDataWrapper = JsonUtility.FromJson<MercenarySaveWrapper>(json);
         if (mercenaryDataWrapper == null || mercenaryDataWrapper.mercenaries == null)
         {
-            Debug.LogError("❌ mercenaryDataWrapper 또는 mercenaryDataWrapper.mercenaries가 null입니다.");
+            Debug.LogError("mercenaryDataWrapper 또는 mercenaryDataWrapper.mercenaries가 null입니다.");
             return;
         }
 
@@ -69,7 +69,7 @@ public class LoadManager : MonoBehaviour
 
         foreach (MercenarySaveData data in mercenaryDataWrapper.mercenaries)
         {
-            Debug.Log($"✅ 불러온 용병: {data.name}, 스탯(체력): {data.baseStats}");
+            Debug.Log($"불러온 용병: {data.name}, 스탯(체력): {data.baseStats}");
 
             Stat baseStats = Stat.FromJSON(data.baseStats);
             Stat equipmentStats = Stat.FromJSON(data.equipmentStats);
@@ -91,7 +91,7 @@ public class LoadManager : MonoBehaviour
                 equippedBoots = LoadBootsByID(data.bootsID)
             };
 
-            // 📌 스킬 불러오기
+            //스킬 불러오기
             if (data.skillIDs != null)
             {
                 foreach (int skillID in data.skillIDs)
@@ -103,7 +103,7 @@ public class LoadManager : MonoBehaviour
                     }
                     else
                     {
-                        Debug.LogWarning($"⚠️ 스킬 ID {skillID}를 찾을 수 없습니다.");
+                        Debug.LogWarning($"스킬 ID {skillID}를 찾을 수 없습니다.");
                     }
                 }
             }
@@ -111,7 +111,7 @@ public class LoadManager : MonoBehaviour
             mercenaryList.Add(merc);
         }
 
-        Debug.Log($"✅ 용병 데이터 로드 완료! 보유 용병 수: {mercenaryList.Count}");
+        Debug.Log($"용병 데이터 로드 완료! 보유 용병 수: {mercenaryList.Count}");
     }
 
 
@@ -150,7 +150,7 @@ public class LoadManager : MonoBehaviour
     }
 }
 
-// 📌 JSON으로 저장된 기본 데이터 클래스 (여기에 추가)
+// JSON으로 저장된 기본 데이터 클래스 (여기에 추가)
 [System.Serializable]
 public class RequiredData
 {

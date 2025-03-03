@@ -68,7 +68,7 @@ public class Inventory : MonoBehaviour
     {
         if (!File.Exists(savePath))
         {
-            Debug.LogError($"❌ InventoryData.json 파일을 찾을 수 없습니다! 경로: {savePath}");
+            Debug.LogError($"InventoryData.json 파일을 찾을 수 없습니다! 경로: {savePath}");
             return;
         }
 
@@ -78,13 +78,13 @@ public class Inventory : MonoBehaviour
         InventoryDataWrapper data = JsonUtility.FromJson<InventoryDataWrapper>(json);
         if (data == null || data.itemIds == null || data.itemCounts == null)
         {
-            Debug.LogError("❌ InventoryData.json이 비어 있거나 잘못된 형식입니다.");
+            Debug.LogError("InventoryData.json이 비어 있거나 잘못된 형식입니다.");
             return;
         }
 
         ownedItems = data.ToDictionary();
 
-        Debug.Log($"✅ 인벤토리 데이터 로드 완료! 총 {ownedItems.Count}개 아이템 보유");
+        Debug.Log($"인벤토리 데이터 로드 완료! 총 {ownedItems.Count}개 아이템 보유");
     }
 }
 

@@ -32,23 +32,23 @@ public class ItemStorageUI : MonoBehaviour
         useItemPanel.SetActive(false);
     }
 
-    // 📌 창고 UI 열기
+    // 창고 UI 열기
     public void OpenItemStorage()
     {
         itemStoragePanel.SetActive(true);
         PopulateItemList();
     }
 
-    // 📌 창고 UI 닫기
+    // 창고 UI 닫기
     private void CloseItemStorage()
     {
         itemStoragePanel.SetActive(false);
     }
 
-    // 📌 아이템 리스트 채우기
+    // 아이템 리스트 채우기
     private void PopulateItemList()
     {
-        Debug.Log("📢 아이템 리스트를 업데이트합니다...");
+        Debug.Log("아이템 리스트를 업데이트합니다...");
 
         foreach (Transform child in itemGrid)
         {
@@ -56,16 +56,16 @@ public class ItemStorageUI : MonoBehaviour
         }
 
         Dictionary<int, int> ownedItems = Inventory.Instance.GetAllOwnedItems();
-        Debug.Log($"✅ 현재 보유한 아이템 개수: {ownedItems.Count}");
+        Debug.Log($"현재 보유한 아이템 개수: {ownedItems.Count}");
 
         foreach (var itemEntry in ownedItems)
         {
-            Debug.Log($"🛒 아이템 로드: ID {itemEntry.Key}, 개수 {itemEntry.Value}");
+            Debug.Log($"아이템 로드: ID {itemEntry.Key}, 개수 {itemEntry.Value}");
 
             BaseItem item = ItemDatabase.GetItemByID(itemEntry.Key);
             if (item == null)
             {
-                Debug.LogError($"⚠️ 아이템 데이터베이스에서 ID {itemEntry.Key} 아이템을 찾을 수 없습니다.");
+                Debug.LogError($"아이템 데이터베이스에서 ID {itemEntry.Key} 아이템을 찾을 수 없습니다.");
                 continue;
             }
 
@@ -80,11 +80,11 @@ public class ItemStorageUI : MonoBehaviour
             button.onClick.AddListener(() => ShowItemDetails(item, itemEntry.Value));
         }
 
-        Debug.Log("📢 아이템 리스트 업데이트 완료!");
+        Debug.Log("아이템 리스트 업데이트 완료!");
     }
 
 
-    // 📌 아이템 상세 정보 표시
+    // 아이템 상세 정보 표시
     private void ShowItemDetails(BaseItem item, int quantity)
     {
         selectedItem = item;
@@ -98,7 +98,7 @@ public class ItemStorageUI : MonoBehaviour
         useButton.gameObject.SetActive(item is ConsumableItem);
     }
 
-    // 📌 소모품 사용 패널 열기
+    // 소모품 사용 패널 열기
     private void OpenUseItemPanel()
     {
         if (!(selectedItem is ConsumableItem)) return;
@@ -107,13 +107,13 @@ public class ItemStorageUI : MonoBehaviour
         PopulateMercenaryList();
     }
 
-    // 📌 소모품 사용 패널 닫기
+    // 소모품 사용 패널 닫기
     private void CloseUseItemPanel()
     {
         useItemPanel.SetActive(false);
     }
 
-    // 📌 용병 리스트 채우기 (소모품 사용)
+    // 용병 리스트 채우기 (소모품 사용)
     private void PopulateMercenaryList()
     {
         foreach (Transform child in mercenaryListPanel)
@@ -135,7 +135,7 @@ public class ItemStorageUI : MonoBehaviour
         }
     }
 
-    // 📌 아이템 사용 로직
+    // 아이템 사용 로직
     private void UseItemOnMercenary(Mercenary mercenary)
     {
         if (!(selectedItem is ConsumableItem consumable)) return;
@@ -143,7 +143,7 @@ public class ItemStorageUI : MonoBehaviour
         mercenary.ApplyStatBoost(consumable.increaseStats);
         Inventory.Instance.RemoveItem(selectedItem.id, 1);
 
-        Debug.Log($"✅ {selectedItem.name}을(를) {mercenary.name}에게 사용!");
+        Debug.Log($" {selectedItem.name}을(를) {mercenary.name}에게 사용!");
         PopulateItemList(); // UI 갱신
         CloseUseItemPanel();
     }
